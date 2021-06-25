@@ -1,0 +1,137 @@
+<!-- 
+ *
+ *  ID: 1750655
+ * Author: Jiajie Li
+ *
+ * Description: The mobile version of TodoMVC, the final project
+ * of scripting program design in the School of Software Engineering
+ * of Tongji University
+ * -->
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1" name="viewport" />
+    <script src="src/index.js"></script>
+    <link href="src/iconfont.css" type="text/css" rel="stylesheet" />
+    <link href="src/index.css" type="text/css" rel="stylesheet" />
+
+    <!-- MediaPipe -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+
+    <title>Mobile TodoMVC</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-font"> To-Do MVC
+            <div id="sort">Sort</div>
+            <div id="cam">Cam</div>
+        </div>
+    </header>
+
+
+    <div id="myModel">
+        <div class="model-content">
+            <div class="model-head">
+                <span class="close" id="close">×</span>
+                <p id='detail-title'>Details</p>
+            </div>
+            <div class="model-body">
+                <div class="model_line">
+                    <span class="model_title">Title</span>
+                    <input class="add_title" id="edit_title"></input>
+                </div>
+                <div class="model_line">
+                    <span class="model_title">Tag</span>
+                    <select class="edit_tag" id="edit_tag">
+                        <option value="Study">Study</option>
+                        <option value="Life" selected>Life</option>
+                        <option value="Work">Work</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="model_line">
+                    <span class="model_title">Priority</span>
+                    <select class="add_order" id="edit_order">
+                        <option value="High">High</option>
+                        <option value="Med">Med</option>
+                        <option value="Low" selected>Low</option>
+                    </select>
+                </div>
+                <div class="model_line">
+                    <span class="model_title">Due Time</span>
+                    <input type="number" class="time_picker" id="edit_start_year" /> Y
+                    <input type="number" class="time_picker" id="edit_start_month" /> M
+                    <input type="number" class="time_picker" id="edit_start_day" /> D
+                    <input type="number" class="time_picker" id="edit_start_hour" /> H
+                </div>
+                <div class="model_line">
+                    <span class="model_title">Remind at</span>
+                    <input type="number" class="time_picker" id="edit_end_year" /> Y
+                    <input type="number" class="time_picker" id="edit_end_month" /> M
+                    <input type="number" class="time_picker" id="edit_end_day" /> D
+                    <input type="number" class="time_picker" id="edit_end_hour" /> H
+                </div>
+
+                <div class="model_lastline">
+                    <span class="model_title">Comment</span>
+                    <textarea class="add_info" rows="5" id="edit_info"></textarea>
+                </div>
+            </div>
+            <div class="model-footer">
+                <div class="confirm" id="edit_note_confirm">Confirm</div>
+                <div class="cancel" id="edit_note_cancel">Cancel</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="myModel2">
+        <div class="model-head">
+            <span class="close" id="close_2">×</span>
+            <p id='detail-title'>Details</p>
+        </div>
+        <div class="model-content">
+            <div class="container camera_canvas">
+                <video class="input_video video_canvas" style="background-color: white;"></video>
+                <canvas class="output_canvas video_canvas" width="1920px" height="1080px" style="background-color: white;"></canvas>
+            </div>
+        </div>
+        <div class="model-footer">
+            <div class="confirm" id="edit_note_confirm_2">Confirm</div>
+        </div>
+    </div>
+
+    <div id="todoList"></div>
+    <div id="activeDiv"></div>
+
+
+    <div class="bundle-op" id="bundle_op_1">
+        <span id="complete-all">
+            <div>Compl. All</div>
+        </span>
+        <span id="todo-all">
+            <div>To-Do All</div>
+        </span>
+        <span id="clear-all">
+            <div>Clear</div>
+        </span>
+    </div>
+    <div class="bundle-op" id="bundle_op_2">
+        
+    </div>
+    <footer class="footer-fixed">
+
+        <input id="todoInput" type="text" placeholder=" to do something..." autofocus>
+        <button id="addButton" type="button">Add Todo Item</button>
+    </footer>
+</body>
