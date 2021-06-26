@@ -1,6 +1,7 @@
 ## 📱脚本程序设计期末项目：手机版ToDoMVC
 
 github 地址：https://github.com/LeeJAJA/TodoMVC
+
 部署地址（Netlify）：https://eager-saha-beb760.netlify.app
 
 ### 🤔基本功能
@@ -42,3 +43,10 @@ github 地址：https://github.com/LeeJAJA/TodoMVC
 - 手势识别
 
   ![image-20210626151544359](figures/readme/image-20210626151544359.png)
+  
+  
+### 参考的开源项目
+模态框的实现_1 ：https://blog.csdn.net/qq_36430299/article/details/55258303
+
+模态框的实现_2:
+https://github.com/cainiao66/ToDoMVC
